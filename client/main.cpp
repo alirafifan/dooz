@@ -4,6 +4,8 @@
 #include <optionsanswer.h>
 #include <intanswer.h>
 #include <stringanswer.h>
+#include <iostream>
+#include <QTCPSocket>
 
 int main(int argc, char *argv[])
 {

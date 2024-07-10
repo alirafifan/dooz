@@ -1,13 +1,17 @@
 #include "question.h"
+#include <iostream>
 
 question::question(QWidget *parent)
     : QDialog(parent)
 {
-//    std::thread t1(&question::fun , this);
+}
+
+void question::fun()
+{
     main_ly = new QVBoxLayout();
     header_ly = new QHBoxLayout();
-    title = new QLabel("موضوع : فیزیک");
-    type = new QLabel("نوع : بمب");
+    title = new QLabel(" موضوع : " + question_category);
+    type = new QLabel(" نوع : " + question_type);
     OK = new QPushButton("OK");
     Cancel = new QPushButton("Cancel");
     push = new QHBoxLayout();
@@ -17,7 +21,7 @@ question::question(QWidget *parent)
     header_ly->addWidget(title , 1 , Qt::AlignRight);
     header_ly->addWidget(type , 1 , Qt::AlignLeft);
     main_ly->addLayout(header_ly);
-    text_qus = new QLabel("بهترین دانشگاه ایران کدام است؟ ");
+    text_qus = new QLabel(question_text);
     question_gb = new QGroupBox("سوال");
     question_gb->setAlignment(Qt::AlignRight);
     question_ly = new QHBoxLayout();
@@ -34,12 +38,3 @@ question::question(QWidget *parent)
     setMaximumSize(450, 270);
 }
 
-void question::fun()
-{
-    int x = 100;
-    while(x >= 0){
-        _sleep(1000);
-        qpb->setValue(x);
-        x -= 10;
-    }
-}

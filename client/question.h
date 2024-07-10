@@ -12,6 +12,7 @@
 #include <QTimer>
 #include <QString>
 #include <thread>
+#include <QTcpSocket>
 
 using namespace std;
 
@@ -21,6 +22,11 @@ class question : public QDialog
 
 public:
     question(QWidget *parent = nullptr);
+    void send_answer_to_server();
+    void set_check_answer_from_server();
+    bool check_my_answer;
+    bool check_opposite_answer;
+    QPushButton *OK , *Cancel;
     void fun();
 
 protected:
@@ -28,10 +34,14 @@ protected:
     QHBoxLayout* header_ly , *question_ly;
     QLabel* text_qus , *title , *type;
     QProgressBar *qpb;
-    QPushButton *skip , *ok;
     QGroupBox* question_gb;
-    QPushButton *OK , *Cancel;
     QHBoxLayout *push;
+
+    QString question_id;
+    QString question_text;
+    QString question_category;
+    QString question_type;
+
 
 };
 
